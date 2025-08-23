@@ -1,0 +1,22 @@
+{
+  "name": "ProofVault",
+  "description": "Decentralized credential management miniapp on Base. Mint, verify, and share credentials seamlessly.",
+  "icon": "icon.png",
+  "primary_category": "productivity",
+  "authors": ["Kaushik Sambe"],
+  "website_url": "https://proofvault-miniapp.vercel.app",
+  "repository_url": "https://github.com/kaushiksambe/base-template-mini-app",
+  "version": "1.0.0",
+  "features": [
+    "credential_management",
+    "nft_minting",
+    "ipfs_storage",
+    "qr_verification",
+    "social_sharing"
+  ],
+  "permissions": [
+    "wallet_connect",
+    "transaction_sign",
+    "ipfs_upload"
+  ]
+}
