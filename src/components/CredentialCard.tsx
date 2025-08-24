@@ -156,3 +156,5 @@ export function CredentialCard({ credential, onShare, onVerify }: CredentialCard
     </div>
   );
 }
+
+export default CredentialCard;

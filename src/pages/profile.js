@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useWallet } from '../hooks/useWallet';
 import { WalletConnect } from '../components/WalletConnect';
-import { CredentialCard } from '../components/CredentialCard';
+import CredentialCard from '../components/CredentialCard.tsx';
 
 export default function ProfilePage() {
   const { isConnected, address } = useWallet();
