@@ -33,6 +33,14 @@ export default function LandingPage() {
       link: "/mint", 
       color: "bg-purple-600 hover:bg-purple-700",
       tooltip: "Create your first credential in under 2 minutes"
+    },
+    {
+      title: "🎉 Share & Verify",
+      description: "Once created, instantly share your credential via QR code or link. Anyone can verify its authenticity in seconds!",
+      action: "Start Now",
+      link: "/mint", 
+      color: "bg-orange-600 hover:bg-orange-700",
+      tooltip: "Share and verify credentials instantly with QR codes"
     }
   ];
 
@@ -45,17 +53,17 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`min-h-screen ${theme.bg} transition-all duration-300`}>
-        {/* Enhanced Navigation */}
-        <nav className="relative group">
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-lg border-b border-white/10 group-hover:bg-black/30 group-hover:border-white/20 transition-all duration-300"></div>
+      <div className={`min-h-screen ${theme.bg} transition-all duration-300 center-content`}>
+        {/* Enhanced Organic Navigation */}
+        <nav className="relative group w-full">
+          <div className="glass-card border-b transition-all duration-500" style={{ borderColor: theme.border }}></div>
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-4 group/logo">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover/logo:from-blue-300 group-hover/logo:to-purple-300 transition-all duration-300 cursor-pointer transform group-hover/logo:scale-105">
+              <div className="flex items-center space-x-4 group/logo organic-hover">
+                <h1 className="text-2xl font-bold gradient-text-modern group-hover/logo:scale-105 transition-all duration-300 cursor-pointer float-smooth">
                   ProofVault
                 </h1>
-                <span className="px-3 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full font-medium border border-blue-400/30 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-200 cursor-pointer">
+                <span className="px-3 py-1 text-xs rounded-full font-medium border transition-all duration-300 cursor-pointer breathe glass-card" style={{ color: theme.text, borderColor: theme.border }}>
                   SECURE
                 </span>
               </div>
@@ -63,7 +71,7 @@ export default function LandingPage() {
                 <ThemeSelector />
                 <Link
                   href="/demo"
-                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+                  className="fluid-button text-sm"
                 >
                   Try Demo
                 </Link>
@@ -72,26 +80,26 @@ export default function LandingPage() {
           </div>
         </nav>
 
-        {/* Enhanced Hero Section */}
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight group cursor-default">
+        {/* Enhanced Hero Section - Properly Centered */}
+        <main className="center-content w-full py-20">
+          <div className="center-content mb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className={`text-5xl md:text-6xl font-bold ${theme.text} mb-6 leading-tight group cursor-default text-center`}>
               Certificates That{" "}
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:from-blue-300 hover:to-purple-300 transition-all duration-300">
                 Actually Work
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto mb-12 leading-relaxed hover:text-gray-100 transition-colors duration-300">
+            <p className={`text-xl md:text-2xl ${theme.textSecondary} max-w-4xl mx-auto mb-12 leading-relaxed hover:opacity-80 transition-opacity duration-300 text-center`}>
               No more calling schools to verify degrees. No more fake certificates.{" "}
               Create digital credentials that employers can verify instantly.
             </p>
             
-            {/* Enhanced Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            {/* Enhanced Organic Action Buttons - Properly Centered */}
+            <div className="center-flex flex-col sm:flex-row gap-6 mb-16">
               <Link href="/mint">
                 <Button 
                   variant="custom"
-                  className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+                  className="fluid-button illuminating-hover text-lg px-10 py-4 organic-hover"
                 >
                   Create Credential
                 </Button>
@@ -100,171 +108,210 @@ export default function LandingPage() {
               <Link href="/demo">
                 <Button 
                   variant="custom"
-                  className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20 hover:border-white/50 text-lg font-semibold rounded-lg transition-all duration-200 transform hover:scale-105"
+                  className="glass-card illuminating-purple px-10 py-4 text-lg font-semibold transition-all duration-300 organic-hover"
+                  style={{ color: theme.text, borderColor: theme.border }}
                 >
                   Try Demo
                 </Button>
               </Link>
             </div>
             
-            {/* Enhanced Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-105 group cursor-pointer">
-                <div className="text-4xl font-bold text-blue-400 mb-2 group-hover:text-blue-300 transition-colors duration-300">1-Click</div>
-                <div className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Credential Creation</div>
-              </div>
-              <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-105 group cursor-pointer">
-                <div className="text-4xl font-bold text-green-400 mb-2 group-hover:text-green-300 transition-colors duration-300">100%</div>
-                <div className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Blockchain Verified</div>
-              </div>
-              <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 hover:bg-gray-800/70 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-105 group cursor-pointer">
-                <div className="text-4xl font-bold text-purple-400 mb-2 group-hover:text-purple-300 transition-colors duration-300">QR Code</div>
-                <div className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Instant Sharing</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced Step Guide */}
-          <div className="bg-gray-800/40 backdrop-blur-sm rounded-2xl p-10 mb-16 border border-gray-700/50 hover:bg-gray-800/60 hover:border-gray-600/60 transition-all duration-300">
-            <h2 className="text-4xl font-bold text-center mb-12 text-white">
-              Get Started in 4 Easy Steps
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {steps.map((step, index) => (
-                <div 
-                  key={index}
-                  className="p-6 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group cursor-pointer"
-                  onMouseEnter={() => setCurrentStep(index)}
-                >
-                  <div className="text-center">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold mb-4 mx-auto group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
-                      {index + 1}
-                    </div>
-                    <div className="text-xl font-semibold mb-4 text-white group-hover:text-blue-300 transition-colors duration-300">{step.title}</div>
-                    <p className="text-gray-400 mb-6 text-sm group-hover:text-gray-300 transition-colors duration-300">{step.description}</p>
-                    <Link href={step.link}>
-                      <Button 
-                        variant="custom"
-                        className={`w-full ${step.color} text-white rounded-lg py-3 px-4 font-medium transition-all duration-200 transform group-hover:scale-105 hover:shadow-md`}
-                      >
-                        {step.action}
-                      </Button>
-                    </Link>
+            {/* Enhanced Organic Stats - Properly Centered */}
+            <div className="center-content w-full">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto w-full">
+                <div className="enhanced-card organic-card illuminating-hover p-10 group cursor-pointer center-content scale-in stagger-1" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border, minHeight: '180px' }}>
+                  <div className="center-content space-y-4">
+                    <div className="text-5xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-300 group-hover:scale-110 transform">1-Click</div>
+                    <div className="text-lg font-medium group-hover:opacity-80 transition-opacity duration-300 text-center" style={{ color: theme.textSecondary }}>Credential Creation</div>
                   </div>
                 </div>
-              ))}
+                <div className="enhanced-card organic-card illuminating-green p-10 group cursor-pointer center-content scale-in stagger-2" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border, minHeight: '180px' }}>
+                  <div className="center-content space-y-4">
+                    <div className="text-5xl font-bold text-green-400 group-hover:text-green-300 transition-colors duration-300 group-hover:scale-110 transform">100%</div>
+                    <div className="text-lg font-medium group-hover:opacity-80 transition-opacity duration-300 text-center" style={{ color: theme.textSecondary }}>Blockchain Verified</div>
+                  </div>
+                </div>
+                <div className="enhanced-card organic-card illuminating-purple p-10 group cursor-pointer center-content scale-in stagger-3" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border, minHeight: '180px' }}>
+                  <div className="center-content space-y-4">
+                    <div className="text-5xl font-bold text-purple-400 group-hover:text-purple-300 transition-colors duration-300 group-hover:scale-110 transform">QR Code</div>
+                    <div className="text-lg font-medium group-hover:opacity-80 transition-opacity duration-300 text-center" style={{ color: theme.textSecondary }}>Instant Sharing</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Enhanced Features */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-gray-800/40 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-[1.02] group">
-              <h3 className="text-2xl font-bold mb-6 text-white flex items-center group-hover:text-blue-300 transition-colors duration-300">
-                <span className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-4 group-hover:bg-green-500 group-hover:scale-110 transition-all duration-300">🔒</span>
-                Why ProofVault?
-              </h3>
-              <ul className="space-y-4 text-gray-300">
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-green-400 mr-3 mt-1 group-hover/item:text-green-300 transition-colors duration-200">✓</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-blue-300 transition-colors duration-200">Blockchain Security Without Complexity</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Enterprise-grade security made simple</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-green-400 mr-3 mt-1 group-hover/item:text-green-300 transition-colors duration-200">✓</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-blue-300 transition-colors duration-200">No Wallet Setup Required</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Get started immediately</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-green-400 mr-3 mt-1 group-hover/item:text-green-300 transition-colors duration-200">✓</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-blue-300 transition-colors duration-200">QR Codes for Offline Verification</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Works anywhere, even without internet</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-green-400 mr-3 mt-1 group-hover/item:text-green-300 transition-colors duration-200">✓</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-blue-300 transition-colors duration-200">Share Credentials Instantly</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">One click sharing via link or QR code</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-800/40 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover:bg-gray-800/60 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-[1.02] group">
-              <h3 className="text-2xl font-bold mb-6 text-white flex items-center group-hover:text-purple-300 transition-colors duration-300">
-                <span className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">🚀</span>
-                Perfect For
-              </h3>
-              <ul className="space-y-4 text-gray-300">
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-2xl mr-3 group-hover/item:scale-110 transition-transform duration-200">🎓</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-purple-300 transition-colors duration-200">Universities & Schools</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Digital diplomas and certificates</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-2xl mr-3 group-hover/item:scale-110 transition-transform duration-200">🏢</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-purple-300 transition-colors duration-200">Companies & Organizations</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Employee certifications and achievements</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-2xl mr-3 group-hover/item:scale-110 transition-transform duration-200">📜</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-purple-300 transition-colors duration-200">Certification Bodies</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Professional licenses and industry certs</div>
-                  </div>
-                </li>
-                <li className="flex items-start group/item hover:bg-gray-700/30 p-3 rounded-lg transition-all duration-200">
-                  <span className="text-2xl mr-3 group-hover/item:scale-110 transition-transform duration-200">💼</span>
-                  <div>
-                    <div className="font-medium text-white group-hover/item:text-purple-300 transition-colors duration-200">Professional Training</div>
-                    <div className="text-sm text-gray-400 group-hover/item:text-gray-300 transition-colors duration-200">Course completions and skill assessments</div>
-                  </div>
-                </li>
-              </ul>
+          {/* Enhanced Organic Step Guide - Properly Centered */}
+          <div className="center-content mb-16">
+            <div className="glass-card p-12 w-full max-w-7xl mx-auto" style={{ borderColor: theme.border }}>
+              <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-modern fade-in-up">
+                Get Started in 4 Easy Steps
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                {steps.map((step, index) => {
+                  const illuminationClass = index === 0 ? 'illuminating-green' : 
+                                          index === 1 ? 'illuminating-hover' : 
+                                          index === 2 ? 'illuminating-purple' : 'illuminating-orange';
+                  return (
+                    <div 
+                      key={index}
+                      className={`enhanced-card organic-card ${illuminationClass} p-8 group cursor-pointer center-content scale-in stagger-${index + 1}`}
+                      style={{ 
+                        backgroundColor: theme.bgSecondary, 
+                        borderColor: theme.border,
+                        minHeight: '320px'
+                      }}
+                      onMouseEnter={() => setCurrentStep(index)}
+                    >
+                      <div className="center-content space-y-6 w-full">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl center-flex text-white text-2xl font-bold shadow-2xl group-hover:pulse-glow transition-all duration-500 transform group-hover:scale-125 group-hover:rotate-12">
+                          {index + 1}
+                        </div>
+                        <div className="center-content space-y-4">
+                          <h3 className="text-xl font-bold group-hover:text-blue-500 transition-colors duration-300 text-center" style={{ color: theme.text }}>
+                            {step.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed group-hover:opacity-80 transition-all duration-300 text-center max-w-xs" style={{ color: theme.textSecondary }}>
+                            {step.description}
+                          </p>
+                        </div>
+                        <Link href={step.link} className="w-full">
+                          <Button 
+                            variant="custom"
+                            className={`w-full ${step.color} text-white rounded-2xl py-4 px-6 font-semibold transition-all duration-300 transform group-hover:scale-105 hover:shadow-xl`}
+                          >
+                            {step.action}
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Enhanced Call to Action */}
-          <div className="bg-gray-800/40 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 text-center hover:bg-gray-800/60 hover:border-gray-600/60 transition-all duration-300 transform hover:scale-[1.02] group">
-            <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
-              Ready to Secure Your Credentials?
-            </h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto group-hover:text-gray-200 transition-colors duration-300">
-              Join the future of digital verification. Start issuing tamper-proof credentials today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/demo">
-                <Button variant="primary" className="text-lg px-8 py-3 transform hover:scale-105 transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/25">
-                  Try Live Demo
-                </Button>
-              </Link>
-              <Link href="/mint">
-                <Button variant="secondary" className="text-lg px-8 py-3 transform hover:scale-105 transition-all duration-200 hover:shadow-xl hover:shadow-purple-500/25">
-                  Create Credential
-                </Button>
-              </Link>
+          {/* Enhanced Organic Features - Properly Centered */}
+          <div className="center-content mb-16 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto w-full">
+              <div className="enhanced-card organic-card illuminating-green p-10 group fade-in-up stagger-1" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border }}>
+                <div className="center-content space-y-8">
+                  <div className="center-flex space-x-4">
+                    <span className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl center-flex shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 text-2xl">🔒</span>
+                    <h3 className="text-3xl font-bold group-hover:text-blue-500 transition-colors duration-300" style={{ color: theme.text }}>
+                      Why ProofVault?
+                    </h3>
+                  </div>
+                  <ul className="space-y-6 w-full" style={{ color: theme.textSecondary }}>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-green-400 text-xl">✓</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Blockchain Security Without Complexity</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Enterprise-grade security made simple</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-green-400 text-xl">✓</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>No Wallet Setup Required</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Get started immediately</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-green-400 text-xl">✓</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>QR Codes for Offline Verification</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Works anywhere, even without internet</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-green-400 text-xl">✓</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Share Credentials Instantly</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>One click sharing via link or QR code</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="enhanced-card organic-card illuminating-purple p-10 group fade-in-up stagger-2" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border }}>
+                <div className="center-content space-y-8">
+                  <div className="center-flex space-x-4">
+                    <span className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl center-flex shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 text-2xl">🚀</span>
+                    <h3 className="text-3xl font-bold group-hover:text-purple-500 transition-colors duration-300" style={{ color: theme.text }}>
+                      Perfect For
+                    </h3>
+                  </div>
+                  <ul className="space-y-6 w-full" style={{ color: theme.textSecondary }}>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-3xl">🎓</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Universities & Schools</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Digital diplomas and certificates</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-3xl">🏢</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Companies & Organizations</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Employee certifications and achievements</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-3xl">📜</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Certification Bodies</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Professional licenses and industry certs</div>
+                      </div>
+                    </li>
+                    <li className="center-flex space-x-4 p-4 rounded-2xl transition-all duration-300 hover:bg-opacity-50" style={{ backgroundColor: theme.theme === 'dark' ? 'rgba(55, 65, 81, 0.1)' : 'rgba(243, 244, 246, 0.3)' }}>
+                      <span className="text-3xl">�</span>
+                      <div className="center-content space-y-2">
+                        <div className="font-semibold text-lg" style={{ color: theme.text }}>Professional Training</div>
+                        <div className="text-sm" style={{ color: theme.textSecondary }}>Course completions and skill assessments</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced Organic Call to Action - Properly Centered */}
+          <div className="center-content mb-16 w-full">
+            <div className="glass-card illuminating-hover p-12 text-center group breathe max-w-4xl mx-auto w-full" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border }}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text-modern fade-in-up">
+                Ready to Secure Your Credentials?
+              </h2>
+              <p className="text-xl mb-12 max-w-2xl mx-auto group-hover:opacity-80 transition-all duration-300 scale-in stagger-1" style={{ color: theme.textSecondary }}>
+                Join the future of digital verification. Start issuing tamper-proof credentials today.
+              </p>
+              <div className="center-flex flex-col sm:flex-row gap-8">
+                <Link href="/demo">
+                  <Button variant="primary" className="fluid-button text-lg px-12 py-5 scale-in stagger-2">
+                    Try Live Demo
+                  </Button>
+                </Link>
+                <Link href="/mint">
+                  <Button variant="secondary" className="glass-card px-12 py-5 text-lg font-semibold organic-hover scale-in stagger-3" style={{ color: theme.text, borderColor: theme.border }}>
+                    Create Credential
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </main>
 
-        {/* Enhanced Footer */}
-        <footer className="bg-gray-800/40 backdrop-blur-sm border-t border-gray-700/50 mt-16 hover:bg-gray-800/60 hover:border-gray-600/60 transition-all duration-300">
-          <div className="max-w-6xl mx-auto px-4 py-8">
-            <div className="text-center group">
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300 cursor-pointer">ProofVault</h3>
-              <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300">Secure Credential Verification on Base Blockchain</p>
-              <div className="border-t border-gray-700/50 pt-4 group-hover:border-gray-600/60 transition-colors duration-300">
-                <p className="text-gray-500 text-sm group-hover:text-gray-400 transition-colors duration-300">© 2024 ProofVault. Building the future of digital identity.</p>
+        {/* Enhanced Footer - Properly Centered */}
+        <footer className="backdrop-blur-sm border-t mt-16 transition-all duration-300 center-content" style={{ backgroundColor: theme.bgSecondary, borderColor: theme.border }}>
+          <div className="max-w-6xl mx-auto px-4 py-12 w-full">
+            <div className="center-content space-y-6 group">
+              <h3 className="text-2xl font-bold group-hover:text-blue-500 transition-colors duration-300 cursor-pointer gradient-text-modern">ProofVault</h3>
+              <p className="text-lg group-hover:opacity-80 transition-all duration-300" style={{ color: theme.textSecondary }}>Secure Credential Verification on Base Blockchain</p>
+              <div className="border-t pt-6 transition-colors duration-300 w-full center-content" style={{ borderColor: theme.border }}>
+                <p className="text-sm group-hover:opacity-80 transition-all duration-300" style={{ color: theme.textSecondary }}>© 2024 ProofVault. Building the future of digital identity.</p>
               </div>
             </div>
           </div>
