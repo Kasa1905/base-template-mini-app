@@ -6,26 +6,29 @@ export function ThemeSelector() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleThemeChange = (themeName: string) => {
-    console.log('Changing theme from', currentTheme, 'to', themeName);
+    console.log('🎨 Theme Change Debug:');
+    console.log('- From:', currentTheme);
+    console.log('- To:', themeName);
+    console.log('- Theme object before:', themes[currentTheme]);
+    console.log('- Theme object after:', themes[themeName]);
+    
     changeTheme(themeName);
     setIsOpen(false);
     
     // Force a small delay to ensure theme change is applied
     setTimeout(() => {
-      console.log('Theme changed to:', themeName);
-    }, 100);
+      console.log('✅ Theme change completed! New theme:', themeName);
+      console.log('✅ Document body classes:', document.body.className);
+    }, 200);
   };
 
   const themeOptions = Object.entries(themes);
   const currentThemeData = themes[currentTheme];
 
-  // Theme icons mapping
+  // Theme icons mapping - only light and dark
   const themeIcons: { [key: string]: string } = {
     dark: '🌙',
-    light: '☀️', 
-    blue: '🌊',
-    purple: '🔮',
-    green: '🌿'
+    light: '☀️'
   };
 
   // Close dropdown when clicking outside
@@ -81,11 +84,8 @@ export function ThemeSelector() {
                     {(themeData as any).name}
                   </div>
                   <div className="text-xs text-gray-500">
-                    {key === 'dark' && 'Dark mode'}
-                    {key === 'light' && 'Light mode'}
-                    {key === 'blue' && 'Ocean theme'}
-                    {key === 'purple' && 'Magic theme'}
-                    {key === 'green' && 'Nature theme'}
+                    {key === 'dark' && 'Dark black theme'}
+                    {key === 'light' && 'Clean light theme'}
                   </div>
                 </div>
                 <div className={`w-4 h-4 rounded-full ${(themeData as any).bg} border-2 border-gray-300`}></div>

@@ -5,12 +5,12 @@ const ThemeContext = createContext();
 export const themes = {
   dark: {
     name: 'Dark',
-    bg: 'bg-gray-900',
-    bgSecondary: 'bg-gray-800',
+    bg: 'bg-black',
+    bgSecondary: 'bg-gray-900',
     text: 'text-white',
     textSecondary: 'text-gray-300',
     accent: 'bg-blue-600',
-    border: 'border-gray-700'
+    border: 'border-gray-800'
   },
   light: {
     name: 'Light', 
@@ -20,33 +20,6 @@ export const themes = {
     textSecondary: 'text-gray-600',
     accent: 'bg-blue-600',
     border: 'border-gray-200'
-  },
-  blue: {
-    name: 'Blue',
-    bg: 'bg-blue-900',
-    bgSecondary: 'bg-blue-800', 
-    text: 'text-blue-100',
-    textSecondary: 'text-blue-200',
-    accent: 'bg-blue-500',
-    border: 'border-blue-700'
-  },
-  purple: {
-    name: 'Purple',
-    bg: 'bg-purple-900',
-    bgSecondary: 'bg-purple-800',
-    text: 'text-purple-100', 
-    textSecondary: 'text-purple-200',
-    accent: 'bg-purple-500',
-    border: 'border-purple-700'
-  },
-  green: {
-    name: 'Green',
-    bg: 'bg-green-900',
-    bgSecondary: 'bg-green-800',
-    text: 'text-green-100',
-    textSecondary: 'text-green-200', 
-    accent: 'bg-green-500',
-    border: 'border-green-700'
   }
 };
 
@@ -57,13 +30,32 @@ export function ThemeProvider({ children }) {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('prootvault-theme') || 'dark';
       setCurrentTheme(saved);
+      
+      // Apply the theme class to body on initial load
+      document.body.classList.remove('theme-dark', 'theme-light');
+      document.body.classList.add(`theme-${saved}`);
+      console.log('🚀 Initial theme applied:', `theme-${saved}`);
     }
   }, []);
 
   const changeTheme = (themeName) => {
+    console.log('🔄 ThemeContext.changeTheme called:', themeName);
+    console.log('📦 Available themes:', Object.keys(themes));
+    console.log('🎯 Selected theme data:', themes[themeName]);
+    
     setCurrentTheme(themeName);
+    
+    // Apply theme class to document body for CSS variables
     if (typeof window !== 'undefined') {
+      // Remove all existing theme classes
+      document.body.classList.remove('theme-dark', 'theme-light');
+      // Add the new theme class
+      document.body.classList.add(`theme-${themeName}`);
+      
       localStorage.setItem('prootvault-theme', themeName);
+      console.log('💾 Theme saved to localStorage:', localStorage.getItem('prootvault-theme'));
+      console.log('🎨 Applied theme class to body:', `theme-${themeName}`);
+      console.log('📄 Body classes now:', document.body.className);
     }
   };
 

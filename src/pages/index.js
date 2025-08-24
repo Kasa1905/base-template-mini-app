@@ -7,7 +7,14 @@ import { useTheme } from '../context/ThemeContext';
 
 export default function LandingPage() {
   const [currentStep, setCurrentStep] = useState(0);
-  const { theme } = useTheme();
+  const { theme, currentTheme, themes } = useTheme();
+
+  // Debug theme state
+  console.log('🎨 Landing Page Theme Debug:', {
+    currentTheme,
+    themeObject: theme,
+    allThemes: Object.keys(themes),
+  });
 
   const steps = [
     {
@@ -57,6 +64,10 @@ export default function LandingPage() {
                 </span>
               </div>
               <div className="flex items-center space-x-4">
+                {/* Debug Theme Indicator */}
+                <div className={`px-2 py-1 text-xs ${theme.accent} text-white rounded`}>
+                  Theme: {currentTheme.toUpperCase()}
+                </div>
                 <ThemeSelector />
                 <Link
                   href="/demo"

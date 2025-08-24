@@ -1,6 +1,9 @@
 import Head from 'next/head';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Layout({ children, title = 'ProofVault - Decentralized Credential Platform' }) {
+  const { theme } = useTheme();
+  
   return (
     <>
       <Head>
@@ -35,7 +38,7 @@ export default function Layout({ children, title = 'ProofVault - Decentralized C
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </Head>
       
-      <div className="min-h-screen bg-gray-50">
+      <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`}>
         {children}
       </div>
     </>
