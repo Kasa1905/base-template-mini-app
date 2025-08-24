@@ -4,6 +4,7 @@ import { useState } from "react";
 import { APP_NAME } from "~/lib/constants";
 import sdk from "@farcaster/frame-sdk";
 import { useMiniApp } from "@neynar/react";
+import { ThemeSelector } from "./ThemeSelector";
 
 type HeaderProps = {
   neynarUser?: {
@@ -21,23 +22,26 @@ export function Header({ neynarUser }: HeaderProps) {
     <div className="relative">
       <div className="mb-1 py-2 px-3 bg-card text-card-foreground rounded-lg flex items-center justify-between border-[3px] border-double border-primary">
         <div className="text-lg font-light">Welcome to {APP_NAME}!</div>
-        {context?.user && (
-          <div
-            className="cursor-pointer"
-            onClick={() => {
-              setIsUserDropdownOpen(!isUserDropdownOpen);
-              setHasClickedPfp(true);
-            }}
-          >
-            {context.user.pfpUrl && (
-              <img
-                src={context.user.pfpUrl}
-                alt="Profile"
-                className="w-10 h-10 rounded-full border-2 border-primary"
-              />
-            )}
-          </div>
-        )}
+        <div className="flex items-center gap-3">
+          <ThemeSelector />
+          {context?.user && (
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                setIsUserDropdownOpen(!isUserDropdownOpen);
+                setHasClickedPfp(true);
+              }}
+            >
+              {context.user.pfpUrl && (
+                <img
+                  src={context.user.pfpUrl}
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full border-2 border-primary"
+                />
+              )}
+            </div>
+          )}
+        </div>
       </div>
       {context?.user && (
         <>

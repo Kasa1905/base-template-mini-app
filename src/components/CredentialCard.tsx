@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "./ui/Button";
+import { QRCodeGenerator } from "./ui/QRCodeGenerator";
 
 interface Credential {
   tokenId: string;
@@ -23,16 +24,6 @@ interface CredentialCardProps {
 export function CredentialCard({ credential, onShare, onVerify }: CredentialCardProps) {
   const [showQR, setShowQR] = useState(false);
   const [sharing, setSharing] = useState(false);
-  const [qrCodeUrl, setQrCodeUrl] = useState("");
-
-  const verificationUrl = `${process.env.NEXT_PUBLIC_APP_DOMAIN || window.location.origin}/verify/${credential.tokenId}`;
-
-  useEffect(() => {
-    if (showQR && !qrCodeUrl) {
-      // Generate QR code URL using API endpoint
-      setQrCodeUrl(`/api/verify/${credential.tokenId}/qr`);
-    }
-  }, [showQR, credential.tokenId, qrCodeUrl]);
 
   const handleShare = async () => {
     if (!onShare) return;
@@ -111,30 +102,6 @@ export function CredentialCard({ credential, onShare, onVerify }: CredentialCard
         )}
       </div>
 
-      {/* QR Code Section */}
-      {showQR && (
-        <div className="mb-4 p-4 bg-gray-50 rounded-lg text-center">
-          {qrCodeUrl ? (
-            <img
-              src={qrCodeUrl}
-              alt="QR Code for credential verification"
-              className="mx-auto mb-2 w-32 h-32"
-            />
-          ) : (
-            <div className="w-32 h-32 mx-auto mb-2 bg-gray-200 rounded flex items-center justify-center">
-              <span className="text-gray-500">Loading QR...</span>
-            </div>
-          )}
-          <p className="text-xs text-gray-600 mb-2">Scan to verify credential</p>
-          <button
-            onClick={() => copyToClipboard(verificationUrl)}
-            className="text-xs text-blue-600 hover:text-blue-800 underline"
-          >
-            Copy verification link
-          </button>
-        </div>
-      )}
-
       {/* Actions */}
       <div className="flex gap-2">
         <Button
@@ -171,6 +138,21 @@ export function CredentialCard({ credential, onShare, onVerify }: CredentialCard
           Minted on {new Date(parseInt(credential.timestamp) * 1000).toLocaleDateString()}
         </p>
       </div>
+
+      {/* QR Code Modal */}
+      {showQR && (
+        <QRCodeGenerator
+          data={{
+            tokenId: credential.tokenId,
+            title: credential.title,
+            issuer: credential.issuer,
+            holder: credential.holder,
+            dateIssued: credential.dateIssued,
+            ipfsHash: credential.ipfsHash,
+          }}
+          onClose={() => setShowQR(false)}
+        />
+      )}
     </div>
   );
 }
