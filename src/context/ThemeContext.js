@@ -5,21 +5,25 @@ const ThemeContext = createContext();
 export const themes = {
   dark: {
     name: 'Dark',
-    bg: 'bg-black',
-    bgSecondary: 'bg-gray-900',
-    text: 'text-white',
-    textSecondary: 'text-gray-300',
-    accent: 'bg-blue-600',
-    border: 'border-gray-800'
+    bg: 'bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800',
+    bgSecondary: 'bg-gray-800/60 backdrop-blur-sm',
+    text: 'text-gray-100',
+    textSecondary: 'text-gray-200',
+    accent: 'bg-gradient-to-r from-blue-500 to-purple-600',
+    accentHover: 'hover:from-blue-600 hover:to-purple-700',
+    border: 'border-gray-700/50',
+    shadow: 'shadow-xl shadow-gray-900/30'
   },
   light: {
-    name: 'Light', 
-    bg: 'bg-white',
-    bgSecondary: 'bg-gray-50',
+    name: 'Light',
+    bg: 'bg-gradient-to-br from-gray-50 via-white to-gray-100',
+    bgSecondary: 'bg-white/90 backdrop-blur-sm',
     text: 'text-gray-900',
-    textSecondary: 'text-gray-600',
-    accent: 'bg-blue-600',
-    border: 'border-gray-200'
+    textSecondary: 'text-gray-700',
+    accent: 'bg-gradient-to-r from-blue-600 to-indigo-600',
+    accentHover: 'hover:from-blue-700 hover:to-indigo-700',
+    border: 'border-gray-200/60',
+    shadow: 'shadow-xl shadow-gray-200/40'
   }
 };
 
@@ -29,19 +33,22 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('prootvault-theme') || 'dark';
-      setCurrentTheme(saved);
+      // Ensure the saved theme exists in our themes object
+      const validTheme = themes[saved] ? saved : 'dark';
+      setCurrentTheme(validTheme);
       
       // Apply the theme class to body on initial load
       document.body.classList.remove('theme-dark', 'theme-light');
-      document.body.classList.add(`theme-${saved}`);
-      console.log('🚀 Initial theme applied:', `theme-${saved}`);
+      document.body.classList.add(`theme-${validTheme}`);
     }
   }, []);
 
   const changeTheme = (themeName) => {
-    console.log('🔄 ThemeContext.changeTheme called:', themeName);
-    console.log('📦 Available themes:', Object.keys(themes));
-    console.log('🎯 Selected theme data:', themes[themeName]);
+    // Validate theme exists
+    if (!themes[themeName]) {
+      console.error('❌ Invalid theme:', themeName, 'Falling back to dark');
+      themeName = 'dark';
+    }
     
     setCurrentTheme(themeName);
     
@@ -53,9 +60,6 @@ export function ThemeProvider({ children }) {
       document.body.classList.add(`theme-${themeName}`);
       
       localStorage.setItem('prootvault-theme', themeName);
-      console.log('💾 Theme saved to localStorage:', localStorage.getItem('prootvault-theme'));
-      console.log('🎨 Applied theme class to body:', `theme-${themeName}`);
-      console.log('📄 Body classes now:', document.body.className);
     }
   };
 

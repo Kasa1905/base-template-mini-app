@@ -10,12 +10,12 @@
 
 /* CSS Variables for theming */
 :root {
-  --bg-primary: #000000;
-  --bg-secondary: #111827;
-  --text-primary: #ffffff;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f3f4f6;
   --text-secondary: #d1d5db;
   --border-color: #374151;
-  --accent-color: #2563eb;
+  --accent-color: #3b82f6;
 }
 
 /* Theme classes */
@@ -29,12 +29,12 @@
 }
 
 .theme-dark {
-  --bg-primary: #000000;
-  --bg-secondary: #111827;
-  --text-primary: #ffffff;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f3f4f6;
   --text-secondary: #d1d5db;
   --border-color: #374151;
-  --accent-color: #2563eb;
+  --accent-color: #3b82f6;
 }
 
 /* Base styles */
@@ -50,6 +50,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom border radius utilities */
+.rounded-4xl {
+  border-radius: 2rem;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
 }
 
 /* Theme-aware utility classes */
@@ -81,7 +113,7 @@ body {
   background-color: var(--accent-color) !important;
 }
 
-/* Custom utilities */
+/* Utility classes for effects */
 .text-gradient {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
@@ -94,7 +126,7 @@ body {
 }
 
 .slide-up {
-  animation: slideUp 0.3s ease-out;
+  animation: slideUp 0.5s ease-out;
 }
 
 @keyframes fadeIn {
