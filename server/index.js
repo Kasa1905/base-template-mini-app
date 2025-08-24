@@ -5,6 +5,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Import services
+import databaseService from './services/databaseService.js';
+import multiChainService from './services/multiChainService.js';
+
 // Import routes
 import credentialsRouter from './routes/credentials.js';
 import verificationRouter from './routes/verification.js';
@@ -20,7 +24,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Security middleware
 app.use(helmet({
@@ -63,8 +67,52 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/credentials', credentialsRouter);
-app.use('/api/verify', verificationRouter);
+// Routes
+app.use('/api/credentials', credentialsRouter);
+app.use('/api/verification', verificationRouter);
 app.use('/api/share', shareRouter);
+
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    const dbStatus = databaseService.getStatus();
+    const multiChainStatus = await multiChainService.getStatus();
+    
+    res.json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      services: {
+        database: dbStatus,
+        multiChain: multiChainStatus
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'unhealthy',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// API status endpoint
+app.get('/api/status', async (req, res) => {
+  try {
+    const multiChainStatus = await multiChainService.getStatus();
+    res.json({
+      success: true,
+      data: multiChainStatus
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Remove duplicate route
+// app.use('/api/share', shareRouter); // Already defined above
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
@@ -79,26 +127,49 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound);
 app.use(errorHandler);
 
-// Graceful shutdown
-const server = app.listen(PORT, () => {
-  console.log(`🚀 ProofVault server running on port ${PORT}`);
-  console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+// Start server with initialization
+const startServer = async () => {
+  try {
+    // Initialize database connection
+    await databaseService.connect();
+    
+    // Initialize multi-chain services
+    await multiChainService.initialize();
+    
+    // Start the server
+    const server = app.listen(PORT, () => {
+      console.log(`🚀 ProofVault server running on port ${PORT}`);
+      console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`⛓️  Default chain: ${process.env.DEFAULT_CHAIN || 'solana'}`);
+      console.log(`🔐 Privacy enabled: ${process.env.PRIVACY_ENABLED === 'true'}`);
+    });
 
-process.on('SIGTERM', () => {
-  console.log('🛑 SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    console.log('✅ Process terminated');
-    process.exit(0);
-  });
-});
+    // Graceful shutdown function
+    const gracefulShutdown = async (signal) => {
+      console.log(`🛑 ${signal} received, shutting down gracefully`);
+      
+      server.close(async () => {
+        console.log('📊 Server closed');
+        
+        // Close database connection
+        await databaseService.disconnect();
+        
+        console.log('✅ Process terminated');
+        process.exit(0);
+      });
+    };
 
-process.on('SIGINT', () => {
-  console.log('🛑 SIGINT received, shutting down gracefully');
-  server.close(() => {
-    console.log('✅ Process terminated');
-    process.exit(0);
-  });
-});
+    // Listen for termination signals
+    process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+    process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+// Start the server
+startServer();
 
 export default app;

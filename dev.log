@@ -1,0 +1,105 @@
+
+> proofvault-miniapp@0.1.0 dev
+> node scripts/dev.js
+
+
+💻 To test your mini app:
+   1. Open the Warpcast Mini App Developer Tools: https://warpcast.com/~/developers
+   2. Scroll down to the "Preview Mini App" tool
+   3. Enter this URL: http://localhost:3000
+   4. Click "Preview" to test your mini app (note that it may take ~5 seconds to load the first time)
+
+(node:93083) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+   ▲ Next.js 15.5.0
+   - Local:        http://localhost:3000
+   - Network:      http://192.0.0.2:3000
+   - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ✓ Compiled /api/mint in 251ms (133 modules)
+ POST /api/mint 200 in 302ms
+ ✓ Compiled /api/verify in 197ms (136 modules)
+ ⚠ "next" should not be imported directly, imported in /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/pages/api/verify.js
+See more info here: https://nextjs.org/docs/messages/import-next
+ POST /api/verify 405 in 211ms
+ GET /api/verify?tokenId=123 200 in 13ms
+ ○ Compiling / ...
+ ✓ Compiled / in 699ms (353 modules)
+ ✓ Compiled in 73ms (353 modules)
+ GET /?id=8875abb6-eec1-4d12-b106-2276a3957d94&vscodeBrowserReqId=1756065562276 200 in 1082ms
+ ✓ Compiled /mint in 233ms (386 modules)
+ GET /mint 200 in 506ms
+ ✓ Compiled /demo in 208ms (364 modules)
+ ✓ Compiled /verify in 314ms (370 modules)
+ ✓ Compiled /api/verify in 45ms (195 modules)
+ GET /api/verify?tokenId=123&walletAddress=123 400 in 74ms
+ GET /demo 200 in 264ms
+ ✓ Compiled in 1745ms (363 modules)
+ ✓ Compiled in 1251ms (363 modules)
+ ✓ Compiled in 373ms (363 modules)
+ ✓ Compiled /api/mint in 233ms (192 modules)
+ POST /api/mint 200 in 291ms
+ GET /demo 200 in 271ms
+ ✓ Compiled /api/verify in 383ms (193 modules)
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/webpack-api-runtime.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/pages/api/verify.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/module-loader/node-module-loader.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/start-server.js
+    at c.f.require (.next/server/webpack-api-runtime.js:1:886)
+    at <unknown> (.next/server/webpack-api-runtime.js:1:359)
+    at Array.reduce (<anonymous>)
+    at c.e (.next/server/webpack-api-runtime.js:1:338)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 571ms (484 modules)
+ GET /api/verify?tokenId=123 500 in 1089ms
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/webpack-api-runtime.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/pages/api/verify.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/module-loader/node-module-loader.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/start-server.js
+    at c.f.require (.next/server/webpack-api-runtime.js:1:886)
+    at <unknown> (.next/server/webpack-api-runtime.js:1:359)
+    at Array.reduce (<anonymous>)
+    at c.e (.next/server/webpack-api-runtime.js:1:338)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /api/verify?tokenId=123 500 in 19ms
+ ✓ Compiled in 236ms (483 modules)
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/webpack-api-runtime.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/.next/server/pages/api/verify.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/module-loader/node-module-loader.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/dev/next-dev-server.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/next.js
+- /Users/kaushiksambe/Documents/GitHub/base-template-mini-app/node_modules/next/dist/server/lib/start-server.js
+    at c.f.require (.next/server/webpack-api-runtime.js:1:886)
+    at <unknown> (.next/server/webpack-api-runtime.js:1:359)
+    at Array.reduce (<anonymous>)
+    at c.e (.next/server/webpack-api-runtime.js:1:338)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /api/verify?tokenId=123 500 in 196ms
+
+🛑 Shutting down...
+[?25h

@@ -1,5 +1,15 @@
 import { ethers } from 'ethers';
-import ProofVaultABI from '../config/ProofVaultABI.json' assert { type: 'json' };
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load ABI using fs
+const ProofVaultABI = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../config/ProofVaultABI.json'), 'utf8')
+);
 
 export class ProofVaultService {
   constructor() {

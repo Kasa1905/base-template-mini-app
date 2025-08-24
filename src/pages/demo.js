@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '../components/ui/Button';
 import { ThemeSelector } from '../components/ui/ThemeSelector';
 import { useTheme } from '../context/ThemeContext';
+import SafeDate from '../components/ui/SafeDate';
 
 // Sample credential data for demonstration
 const sampleCredentials = [
@@ -82,7 +83,7 @@ function SimpleCredentialCard({ credential, onAction, theme }) {
           <strong>Recipient:</strong> {credential.recipient}
         </p>
         <p className={`${theme.textSecondary} text-sm`}>
-          <strong>Date:</strong> {new Date(credential.dateIssued).toLocaleDateString()}
+          <strong>Date:</strong> <SafeDate dateValue={credential.dateIssued} format="locale" />
         </p>
         <p className={`${theme.textSecondary} text-sm`}>
           <strong>Description:</strong> {credential.description}

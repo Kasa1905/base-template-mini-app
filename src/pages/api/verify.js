@@ -1,5 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
 // Mock credentials database (replace with real database)
 const mockCredentials = [
   {

@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/ui/Button';
 import { ThemeSelector } from '../components/ui/ThemeSelector';
+import SafeDate, { SafeCurrentDate } from '../components/ui/SafeDate';
 
 export default function MintPage() {
   const router = useRouter();
@@ -16,11 +17,19 @@ export default function MintPage() {
     recipientEmail: '',
     organizationName: '',
     achievementTitle: '',
-    issueDate: new Date().toISOString().split('T')[0],
+    issueDate: '',
     description: '',
     skills: []
   });
   const [loading, setLoading] = useState(false);
+
+  // Initialize date on client side only
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      issueDate: new Date().toISOString().split('T')[0]
+    }));
+  }, []);
 
   const credentialTypes = [
     { 
@@ -344,7 +353,7 @@ export default function MintPage() {
                 <div className="flex justify-between">
                   <span className={`${theme.textSecondary}`}>Date:</span>
                   <span className={`${theme.text} font-medium`}>
-                    {new Date(formData.issueDate).toLocaleDateString()}
+                    <SafeDate dateValue={formData.issueDate} format="locale" />
                   </span>
                 </div>
                 {formData.description && (
